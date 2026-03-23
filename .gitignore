@@ -2,3 +2,4 @@ __pycache__/
 build/
 dist/
 KeyPulse.spec
+.DS_Store

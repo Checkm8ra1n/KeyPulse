@@ -5,7 +5,7 @@ from PyQt6.QtWidgets import QApplication, QSystemTrayIcon, QMenu, QToolTip
 from tooltip import KeyListener
 from pynput import keyboard
 import platform
-
+import os
 
 class HotkeyListener(QObject):
     toggle_signal = pyqtSignal()  # signal per main thread
@@ -46,7 +46,12 @@ class TrayApp:
 
         # Tray icon
         self.tray = QSystemTrayIcon()
-        self.tray.setIcon(QIcon("icon.png"))
+        if getattr(sys, 'frozen', False):  # Se siamo in PyInstaller bundle
+            base_path = sys._MEIPASS
+        else:
+            base_path = os.path.abspath(".")        
+        icon_path = os.path.join(base_path, "icon.png")
+        self.tray.setIcon(QIcon(icon_path))
         self.tray.setToolTip("KeyPulse ⚡")
 
         # Menu
