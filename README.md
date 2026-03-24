@@ -10,6 +10,10 @@ And just run `python3 main.py`
 
 You can also download the application file from the releases
 
+## Compling the project
+
+Install pyinstaller with pip, then run `pyinstaller --name KeyPulse --windowed --onefile --add-data "icon.png:."`
+
 ## Note for macOS
 
 If you'd like to test the tool on mac, the tool works perfectly, but if you want to hide the Python icon from the dock, you'll have to use pyinstaller to make an app file and on the `info.plist` generated, you have to insert these strings:
